@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import br.com.caelum.correios.soap.ConsumidorServicoCorreios;
 import br.com.caelum.estoque.soap.AutorizacaoException;
 import br.com.caelum.estoque.soap.EstoqueWS;
 import br.com.caelum.estoque.soap.EstoqueWSService;
@@ -105,8 +106,10 @@ public class Carrinho implements Serializable {
 	}
 
 	public void atualizarFrete(final String novoCepDestino) {
+		ConsumidorServicoCorreios servicoCorreios = new ConsumidorServicoCorreios();
+		this.valorFrete = servicoCorreios.calculaFrete(novoCepDestino);
+		
 		this.cepDestino = novoCepDestino;
-
 		//servico web do correios aqui
 	}
 
@@ -262,7 +265,6 @@ public class Carrinho implements Serializable {
 		
 		for (final ItemEstoque itemEstoque: itensNoEstoque) {
 			atualizarQuantidadeDisponivelDoItemCompra(itemEstoque);
-			
 		}
 		
 		
