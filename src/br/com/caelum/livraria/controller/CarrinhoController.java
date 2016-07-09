@@ -127,7 +127,8 @@ public class CarrinhoController{
 	@RequestMapping("/listar")
 	public String listar() throws Exception {
 		
-		this.carrinho.verificarDisponibilidadeDosItensComRmi();
+		// this.carrinho.verificarDisponibilidadeDosItensComRmi(); RMI
+		this.carrinho.verificarDisponibilidadeDosItensComSoap();
 		
 		return JSP_CARRINHO_LISTAR;
 	}
