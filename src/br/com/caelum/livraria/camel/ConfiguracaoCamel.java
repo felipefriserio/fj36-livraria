@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfiguracaoCamel {
 
-
 	@PostConstruct
 	void init() throws Exception {
 
